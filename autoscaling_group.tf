@@ -185,8 +185,8 @@ resource "aws_autoscaling_group" "master-eu-west-1c-masters-ulan-best-com" {
 resource "aws_autoscaling_group" "nodes-ulan-best-com" {
   name                 = "nodes.ulan-best.com"
   launch_configuration = "${aws_launch_configuration.nodes-ulan-best-com.id}"
-  max_size             = 3
-  min_size             = 3
+  max_size             = "${var.max_size}"
+  min_size             = "${var.min_size}"
   vpc_zone_identifier  = ["${aws_subnet.eu-west-1a-ulan-best-com.id}", "${aws_subnet.eu-west-1b-ulan-best-com.id}", "${aws_subnet.eu-west-1c-ulan-best-com.id}"]
 
   tag = {
